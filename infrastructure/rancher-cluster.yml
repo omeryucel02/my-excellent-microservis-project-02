@@ -1,5 +1,5 @@
 nodes:
-  - address: 172.31.79.244               # Change with the Private Ip of rancher server
+  - address: 172.31.79.244                # Change with the Private Ip of rancher server
     internal_address: 172.31.79.244       # Change with the Private Ip of rancher server
     user: ubuntu
     role:
@@ -16,3 +16,10 @@ services:
     retention: 24h
 
 ssh_key_path: ~/.ssh/petclinic-rancher.pem
+
+# Required for external TLS termination with
+# ingress-nginx v0.22+
+ingress:
+  provider: nginx
+  options:
+    use-forwarded-headers: "true"
